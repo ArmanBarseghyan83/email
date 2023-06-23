@@ -1,0 +1,35 @@
+{% extends "mail/layout.html" %}
+
+{% block body %}
+
+<h2 style="margin-top: 2rem;">Login</h2>
+
+{% if message %}
+<div>{{ message }}</div>
+{% endif %}
+
+<form action="{% url 'login' %}" method="post" class="mt-5 w-75">
+    {% csrf_token %}
+    <div class="form-group">
+        <input autofocus class="form-control" type="email" name="email" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="password" name="password" placeholder="Password">
+    </div>
+    <input class="btn btn-primary" type="submit" value="Login">
+</form>
+
+<div>Don't have an account? <a href="{% url 'register' %}">Register here.</a></div>
+
+<div>
+    <form action="{% url 'login' %}" method="post" class="mt-5 w-100">
+        {% csrf_token %}
+        <input type="email" name="email" value="arman@gmail.com" hidden />
+
+        <input name="password" value="arman" type="password" hidden />
+
+        Or a faster way to check out <button class="btn btn-success btn-sm" type="submit"> My Account</button>
+    </form>
+</div>
+
+{% endblock %}

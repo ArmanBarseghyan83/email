@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", "Lato", sans-serif;
+  margin: 0;
+  background-color: rgb(210, 213, 221);
+}
+
+.container {
+  margin-top: 2rem;
+}
+
+.email {
+  display: flex;
+  border-top: 0.5px solid rgb(219, 219, 219);
+  cursor: pointer;
+}
+
+.email:hover {
+  box-shadow: 0.5px 3px 3px rgb(168, 168, 168);
+}
+
+.unread {
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-top: 0.8rem;
+  border-radius: 50%;
+  background-color: rgb(0, 140, 255);
+}
+
+.email:last-child {
+  border-bottom: 0.5px solid rgb(219, 219, 219);
+}
+
+.email div {
+  padding: 0.2rem;
+}
+
+.email div:last-child {
+  margin-left: auto;
+}
+
+#email-view,
+#emails-view {
+  box-shadow: 0px 3px 7px rgb(161, 161, 161);
+  border-radius: 0.3rem;
+  padding: 1.5rem;
+  background-color: rgb(248, 251, 255);
+}
