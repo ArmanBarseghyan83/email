@@ -1,0 +1,49 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+<h2>{{ request.user.email }}</h2>
+
+<button class="btn btn-sm btn-info" id="inbox">Inbox</button>
+<button class="btn btn-sm btn-info " id="compose">Compose</button>
+<button class="btn btn-sm btn-info" id="sent">Sent</button>
+<button class="btn btn-sm btn-info" id="archived">Archived</button>
+<a class="btn btn-sm btn-secondary" href="{% url 'logout' %}">Log Out</a>
+<hr>
+
+</nav>
+
+<div id="emails-view">
+</div>
+
+<div id="email-view"></div>
+
+<div id="compose-view">
+    <h3>New Email</h3>
+    <form id="compose-form">
+        <div class="form-group">
+            From: <input disabled class="form-control" value="{{ request.user.email }}">
+        </div>
+        <div class="form-group">
+            To One Of The Registered Users:
+            <select id="compose-recipients" class="form-control">
+                {% for email in users_emails %}
+                <option value="{{email}}">{{email}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            Subject: <input class="form-control" id="compose-subject">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control mt-4" id="compose-body" rows="5"></textarea>
+        </div>
+        <input type="submit" class="btn btn-sm btn-info" />
+    </form>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}
