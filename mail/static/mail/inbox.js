@@ -19,6 +19,7 @@ function compose_email() {
   document.querySelector("#compose-body").value = "";
 }
 
+// Create the html elements and fetch the data from the backend for the specific mailbox.
 function load_mailbox(mailbox) {
   document.querySelector("#emails-view").style.display = "block";
   document.querySelector("#compose-view").style.display = "none";
@@ -65,6 +66,8 @@ function load_mailbox(mailbox) {
     });
 }
 
+
+// Create the html elements and fetch the data from the backend for the specific email.
 function createEmailPage(mailbox, email) {
   const p1 = document.createElement("p");
   const p2 = document.createElement("p");
@@ -106,6 +109,7 @@ function createEmailPage(mailbox, email) {
     }
 
   });
+
   btn2.addEventListener("click", () => {
 
     if (!email.archived) {
@@ -132,6 +136,7 @@ function createEmailPage(mailbox, email) {
   document.querySelector("#email-view").append(p1, p2, p4, btn1, btn2, hr, p3, p5);
 }
 
+// Collect the form data and fetch data to the backend for sending a new email.
 function send_email(e) {
   e.preventDefault();
 

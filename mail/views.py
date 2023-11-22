@@ -10,7 +10,7 @@ from django.views.decorators.cache import cache_control
 
 from .models import User, Email
 
-
+# Home page
 def index(request):
 
     if request.user.is_authenticated:
@@ -22,6 +22,7 @@ def index(request):
         return HttpResponseRedirect(reverse("login"))
 
 
+# Send an email
 @csrf_exempt
 @login_required
 def compose(request):
@@ -73,6 +74,7 @@ def compose(request):
     return JsonResponse({"message": "Email sent successfully."}, status=201)
 
 
+# Get the mailbox data
 @login_required
 def mailbox(request, mailbox):
     if not request.user.is_authenticated:
@@ -99,6 +101,7 @@ def mailbox(request, mailbox):
     return JsonResponse([email.serialize() for email in emails], safe=False)
 
 
+# Get the email by its id value
 @csrf_exempt
 @login_required
 def email(request, email_id):
@@ -128,6 +131,7 @@ def email(request, email_id):
         return JsonResponse({
             "error": "GET or PUT request required."
         }, status=400)
+
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def login_view(request):
